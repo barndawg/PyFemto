@@ -1,9 +1,0 @@
-#!/bin/bash
-echo "Welcome to Femto Music Player's Bash launcher!"
-
-ls music/
-echo "Loading Femto..."
-
-echo
-
-sudo python Femto.py
