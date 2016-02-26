@@ -4,7 +4,7 @@ next = 0
 breakLoop = 0
 
 print ("Femto v1.3: the tiny music player by ByteUp! Software.")
-
+    
 while True:
 
         print ("Type a command. Enter 'help' for a list of commands.")
@@ -19,7 +19,7 @@ while True:
                 if next != 0:
                         command = "open"
 
-        if command == "open":
+        if command == "open":    
                 breakLoop = 0
                 cancel = 0
                 while breakLoop == 0:
@@ -32,8 +32,8 @@ while True:
                                 next = 0
 
                         breakLoop = 1
-
-                xmixer.init()
+            
+                pygame.mixer.init()
                 breakLoop = 0
                 extensionNum = 1
                 loadFailed = 0
@@ -53,10 +53,10 @@ while True:
                         try:
                                 pygame.mixer.music.load(songfile)
                                 breakLoop = 1
-
+                
                         except:
                                 extensionNum = extensionNum + 1
-
+                
                 if loadFailed == 0:
                         pygame.mixer.music.play()
                         pygame.mixer.music.set_volume(1)
@@ -75,31 +75,31 @@ while True:
             print ("credits - Shows credits.")
             print ("version - Shows the version of the player.")
             print ("changelog - Show a changelog.")
-
+            
         elif command == "lyrics":
             breakLoop = 0
-
+            
             while breakLoop == 0:
                 lyrics = raw_input("Lyrics filename (has to be .txt)> ")
                 lyrics = ("lyrics/" + lyrics + ".txt")
 
                 breakLoop = 1
-
+            
                 try:
                     lyricFile = open(lyrics , 'r')
-
+                
                 except:
                     print ("Looks like the filename you just entered doesn't exist.")
                     breakLoop = "0"
-
+                
             print
             print lyricFile.read()
-
+        
         elif command == "queue":
             next = raw_input("Songname (e.g 'This Song'.) > ")
             playing = next
             next = ("music/" + next)
-
+            
         elif command == "pause":
             pygame.mixer.music.pause()
             raw_input ("Press [ENTER] to resume playback.")
